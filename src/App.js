@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import data from ".assets/data.json";
+import data from "./assets/data.json";
 import JobBoardComponent from "./components/JobBoardComponent";
 
 function App() {
