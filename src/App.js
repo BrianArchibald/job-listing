@@ -16,7 +16,9 @@ function App() {
 
   return (
     <div className="App">
-      <h2 className="text-4xl">Hello Worlds</h2>
+      <header className="bg-teal-500 mb-12">
+        <img src="/images/bg-header-desktop.svg" alt="background" />
+      </header>
       {jobs.length === 0 ? (
         <p>Fetching Jobs...</p>
       ) : (

@@ -1,34 +1,48 @@
 import React from "react";
 
-const JobBoardComponent = ({ job }) => {
-    const langAndTools = [];
+const JobBoardComponent = ({
+    job: {
+        company,
+        logo,
+        featured,
+        position,
+        role,
+        level,
+        postedAt,
+        contract,
+        location,
+        languages,
+        tools,
+    },
+    }) => { 
+        const tags = [ role, level ];
 
-    if (job.tools) {
-        langAndTools.push(...job.tools);
+    if (tools) {
+        tags.push(...tools);
     }
 
-    if (job.languages) {
-        langAndTools.push(...job.languages);
+    if (languages) {
+        tags.push(...languages);
     }
-
+    
     return (
-  <div className="flex bg-white shadow-md m-4 p-4">
+  <div className="flex bg-white shadow-md m-4 p-6 rounded">
     <div>
-      <img src={job.logo} alt={job.company} />
+      <img src={logo} alt={company} />
     </div>
     <div className="flex flex-col justify-between ml-4">
-        <h3 className="font-bold text-teal-500">{job.company}</h3>
-        <h2 className="font-bold text-xl">{job.position}</h2>
+        <h3 className="font-bold text-teal-500">
+            {company}
+            {featured && <span className="bg-teal-500 text-teal-100 font-bold rounded-full py-1 px-2 m-2">Featured</span>}
+        </h3>
+        <h2 className="font-bold text-xl">{position}</h2>
         <p className="text-gray-700">
-            {job.postedAt} · {job.contract} · {job.location}
+            {postedAt} · {contract} · {location}
         </p>
     </div> 
-    <div>
-        {job.languages ? (
-            job.languages.map((language) => <span>{language}</span>)
-        ) : ( '' )}
-        {job.tools ? (
-            job.tools.map((tool) => <span>{tool}</span>)
+    <div className="flex items-center ml-auto">
+        {tags ? (
+            tags.map((tag) => <span className="text-teal-500 bg-teal-100 font-bold m-3 p-2 rounded">{tag}</span>)
         ) : ( '' )}
     </div>
   </div>
